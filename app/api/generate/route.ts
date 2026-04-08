@@ -97,7 +97,7 @@ Language: ${language}. Output ONLY WordPress block code.`;
 
     // Call Claude API
     // Default: Haiku (fast, fits any timeout). Set CLAUDE_MODEL env to use Sonnet on Pro.
-    const model = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20241022";
+    const model = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20251001";
     
     const apiResponse = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
