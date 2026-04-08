@@ -9,7 +9,7 @@ const LANDING_PAGE_BLOCKS = [
   "block-banner", "block-video", "block-text", "block-text-button",
   "block-info", "block-infocols", "block-icons", "block-courses",
   "block-plan", "block-table", "block-faq", "block-contact-form2",
-  "block-opinions", "block-profits", "block-crew", "block-gallery",
+  "block-opinions", "block-profits", "block-gallery",
   "block-list", "block-listnumber", "block-instagram", "block-line",
 ];
 
@@ -91,11 +91,11 @@ ${prompt}
 
 ${selectedBlocks && selectedBlocks.length > 0
   ? `Use these blocks in this order: ${selectedBlocks.join(", ")}`
-  : "Choose 5-8 most appropriate blocks for a high-converting landing page. Always include: banner, at least one content block, FAQ, and a form."}
+  : "Choose 5-8 most appropriate blocks for a high-converting landing page. Always include: banner, content blocks, FAQ, and a form."}
 
 Language: ${language}. Output ONLY WordPress block code.`;
 
-    // Call Claude API
+    // Call Claude API — Sonnet for quality (requires Vercel Pro for 60s timeout)
     const model = process.env.CLAUDE_MODEL || "claude-sonnet-4-20250514";
     
     const apiResponse = await fetch("https://api.anthropic.com/v1/messages", {
