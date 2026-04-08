@@ -95,8 +95,9 @@ ${selectedBlocks && selectedBlocks.length > 0
 
 Language: ${language}. Output ONLY WordPress block code.`;
 
-    // Call Claude API — Sonnet for quality (requires Vercel Pro for 60s timeout)
-    const model = process.env.CLAUDE_MODEL || "claude-sonnet-4-20250514";
+    // Call Claude API
+    // Default: Haiku (fast, fits any timeout). Set CLAUDE_MODEL env to use Sonnet on Pro.
+    const model = process.env.CLAUDE_MODEL || "claude-haiku-4-5-20241022";
     
     const apiResponse = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -107,7 +108,7 @@ Language: ${language}. Output ONLY WordPress block code.`;
       },
       body: JSON.stringify({
         model,
-        max_tokens: 8000,
+        max_tokens: 4096,
         system: systemPrompt,
         messages: [{ role: "user", content: userPrompt }],
       }),
